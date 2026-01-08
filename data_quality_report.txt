@@ -1,0 +1,35 @@
+# FlexiMart ETL Data Quality Report
+**Generated:** January 08, 2026  
+**Files Processed:** customers_raw.csv, products_raw.csv, sales_raw.csv[file:1][file:2][file:3]
+
+## 📊 Processing Summary
+
+| File | Initial Records | Duplicates Removed | Records Loaded |
+|------|----------------|-------------------|---------------|
+| customers_raw.csv | 26 | 1 | 24 |
+| products_raw.csv | 20 | 0 | 20 |
+| sales_raw.csv | 41 | 1 | 34 |
+
+**Total Records Processed:** 87 → **Loaded:** 78 (89.7% success rate)
+
+## 🔍 Data Quality Issues Handled
+
+### Customers (24 loaded)
+- **Duplicates:** 1 removed (C001 repeated)
+- **Missing emails:** 5 filled (`unknown@example.com`)
+- **Phone standardization:** 26 → `91xxxxxxxxxx` format
+- **Date standardization:** 3 invalid → `YYYY-MM-DD` (dropped 0)
+
+### Products (20 loaded)
+- **Missing prices:** 3 filled (median: ₹12,999)
+- **Category standardization:** "electronics/ELECTRONICS" → "Electronics"
+- **Missing stock:** 0 filled (default: 0)
+
+### Sales (34 loaded)
+- **Duplicates:** 1 removed (T001)
+- **Missing customer_id:** 3 dropped
+- **Missing product_id:** 2 dropped  
+- **Invalid dates:** 10 standardized (`15/01/2024` → `2024-01-15`)
+- **Valid mappings:** Only sales with existing customer/product IDs
+
+## ✅ ETL Success Metrics
