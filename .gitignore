@@ -1,0 +1,17 @@
+# Data files
+*.csv
+*.pdf
+*.jpg
+*.png
+
+# Logs/DB
+dataqualityreport.txt
+*.log
+*.db
+*.sql.dump
+
+# Python
+__pycache__/
+*.pyc
+.env
+
