@@ -1,7 +1,7 @@
 // Operation 1: Import JSON
 // Import the provided JSON file into collection 'products'
     //Process in MongoDB Compass
-        //Compass → fleximart → IMPORT → select productscatalog.json → Collection products → Import
+        //Compass → fleximart → IMPORT → select products_catalog.json → Collection products → Import
         // Result: products collection with 10 docs ready for Operations 2-5.
 
 // Basic Query: Electronics category, price < 50000
@@ -39,7 +39,7 @@ db.products.aggregate([
 //use fleximart;
 
 db.products.updateOne(
-  { "productid": "ELEC001" },  // Filter: exact product
+  { "product_id": "ELEC001" },  // Filter: exact product
   { 
     "$push": {  // Append to array (non-destructive)
       "reviews": { 
@@ -54,7 +54,7 @@ db.products.updateOne(
 
 // Verify update
 db.products.findOne(
-  { "productid": "ELEC001" }, 
+  { "product_id": "ELEC001" }, 
   { "name": 1, "reviews": 1 }
 );
 

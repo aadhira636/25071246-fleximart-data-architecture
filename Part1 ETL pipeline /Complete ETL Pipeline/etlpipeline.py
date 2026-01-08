@@ -28,53 +28,53 @@ def main():
         print("✅ Connected")
         
         # SINGLE statements (no multi=True)
-        cursor.execute("DROP TABLE IF EXISTS orderitems")
+        cursor.execute("DROP TABLE IF EXISTS order_items")
         cursor.execute("DROP TABLE IF EXISTS orders") 
         cursor.execute("DROP TABLE IF EXISTS products")
         cursor.execute("DROP TABLE IF EXISTS customers")
         
         cursor.execute("""
             CREATE TABLE customers (
-                customerid INT PRIMARY KEY AUTO_INCREMENT,
-                firstname VARCHAR(50) NOT NULL,
-                lastname VARCHAR(50) NOT NULL,
+                customer_id INT PRIMARY KEY AUTO_INCREMENT,
+                first_name VARCHAR(50) NOT NULL,
+                last_name VARCHAR(50) NOT NULL,
                 email VARCHAR(100),
                 phone VARCHAR(20),
                 city VARCHAR(50),
-                registrationdate DATE
+                registration_date DATE
             )
         """)
         
         cursor.execute("""
             CREATE TABLE products (
-                productid INT PRIMARY KEY AUTO_INCREMENT,
-                productname VARCHAR(100) NOT NULL,
+                product_id INT PRIMARY KEY AUTO_INCREMENT,
+                product_name VARCHAR(100) NOT NULL,
                 category VARCHAR(50) NOT NULL,
                 price DECIMAL(10,2) NOT NULL,
-                stockquantity INT DEFAULT 0
+                stock_quantity INT DEFAULT 0
             )
         """)
         
         cursor.execute("""
             CREATE TABLE orders (
-                orderid INT PRIMARY KEY AUTO_INCREMENT,
-                customerid INT NOT NULL,
-                orderdate DATE NOT NULL,
-                totalamount DECIMAL(10,2) NOT NULL,
+                order_id INT PRIMARY KEY AUTO_INCREMENT,
+                customer_id INT NOT NULL,
+                order_date DATE NOT NULL,
+                total_amount DECIMAL(10,2) NOT NULL,
                 status VARCHAR(20) DEFAULT 'Pending',
-                KEY(customerid)
+                KEY(customer_id)
             )
         """)
         
         cursor.execute("""
-            CREATE TABLE orderitems (
-                orderitemid INT PRIMARY KEY AUTO_INCREMENT,
+            CREATE TABLE order_items (
+                order_item_id INT PRIMARY KEY AUTO_INCREMENT,
                 orderid INT NOT NULL,
-                productid INT NOT NULL,
+                product_id INT NOT NULL,
                 quantity INT NOT NULL,
-                unitprice DECIMAL(10,2) NOT NULL,
+                unit_price DECIMAL(10,2) NOT NULL,
                 subtotal DECIMAL(10,2) NOT NULL,
-                KEY(orderid), KEY(productid)
+                KEY(order_id), KEY(product_id)
             )
         """)
         conn.commit()
@@ -114,7 +114,7 @@ def main():
         ]
         
         for data in products_data:
-            cursor.execute("INSERT INTO products (productname, category, price, stockquantity) VALUES (%s,%s,%s,%s)", data)
+            cursor.execute("INSERT INTO products (product_name, category, price, stock_quantity) VALUES (%s,%s,%s,%s)", data)
         conn.commit()
         print("✅ 10 products loaded")
 
@@ -145,11 +145,11 @@ def main():
             prod_id = prod_ids[i % len(prod_ids)]
             unit_price = amount / qty if qty else amount
             
-            cursor.execute("INSERT INTO orders (customerid, orderdate, totalamount, status) VALUES (%s,%s,%s,%s)",
+            cursor.execute("INSERT INTO orders (customer_id, order_date, total_amount, status) VALUES (%s,%s,%s,%s)",
                           (cust_id, date, amount, status))
-            order_id = cursor.lastrowid
+            order_id = cursor.last_row_id
             
-            cursor.execute("INSERT INTO orderitems (orderid, productid, quantity, unitprice, subtotal) VALUES (%s,%s,%s,%s,%s)",
+            cursor.execute("INSERT INTO order_items (orderid, product_id, quantity, unit_price, subtotal) VALUES (%s,%s,%s,%s,%s)",
                           (order_id, prod_id, qty, unit_price, amount))
         
         conn.commit()
@@ -168,7 +168,7 @@ def main():
     finally:
         if conn and conn.is_connected():
             conn.close()
-            print("\n🚀 NOW RUN QUERIES: mysql -u root -p fleximart < businessqueries.sql")
+            print("\n🚀 NOW RUN QUERIES: mysql -u root -p fleximart < business_queries.sql")
 
 if __name__ == "__main__":
     main()

@@ -6,10 +6,10 @@ Section A: Limitations of RDBMS
         ANS:  Laptops require RAM, processor, storage while shoes need size, color, material. RDBMS forces a single products table with sparse columns (most NULL) or complex Entity-Attribute-Value (EAV) tables that destroy query performance and violate normalization. Joins across EAV tables for filtering become exponentially slow.
 
     2. Frequent schema changes when adding new product types
-        ANS: Adding smartwatches (with heart_rate_sensor, battery_life) or furniture (with dimensions, weight_capacity) requires ALTER TABLE operations on production databases containing millions of rows. This causes downtime, locks tables, and cascades through foreign key constraints in orderitems.
+        ANS: Adding smartwatches (with heart_rate_sensor, battery_life) or furniture (with dimensions, weight_capacity) requires ALTER TABLE operations on production databases containing millions of rows. This causes downtime, locks tables, and cascades through foreign key constraints in order_items.
 
     3. Storing customer reviews as nested data
-        ANS:  Storing reviews as separate normalized tables requires expensive multi-table JOINs for product details. A single product page needs 3-4 joins (products → orderitems → orders → reviews) versus MongoDB's single document read with embedded reviews array.
+        ANS:  Storing reviews as separate normalized tables requires expensive multi-table JOINs for product details. A single product page needs 3-4 joins (products → order_items → orders → reviews) versus MongoDB's single document read with embedded reviews array.
 
 Section B: NoSQL Benefits
 
@@ -22,7 +22,7 @@ Section B: NoSQL Benefits
         ANS: Customer reviews nest directly: {name: "Samsung Galaxy", reviews: [{user: "U001", rating: 5}, {user: "U002", rating: 4}]}. Single document read loads product + all reviews vs. RDBMS 4-table JOIN. Product page renders 10x faster.
 
     3. Horizontal scalability
-        ANS: Sharding distributes products across multiple servers by category or productid. Add capacity linearly without downtime, unlike RDBMS vertical scaling limits. FlexiMart handles Black Friday traffic spikes seamlessly.
+        ANS: Sharding distributes products across multiple servers by category or product_id. Add capacity linearly without downtime, unlike RDBMS vertical scaling limits. FlexiMart handles Black Friday traffic spikes seamlessly.
 
 Section C: Trade-offs
 

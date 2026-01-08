@@ -1,42 +1,42 @@
 <!-- schemadocumentation.md - Part 1 Schema Doc -->
-# Database Schema Documentation
+Database Schema Documentation
 
-## Entity-Relationship Description
-**ENTITY: customers**  
+Entity-Relationship Description
+ENTITY: customers
 Purpose: Stores customer information.  
-Attributes: customerid (PK), firstname, lastname, email (unique), phone, city, registrationdate.  
+Attributes: customer_id (PK), first_name, last_name, email (unique), phone, city, registration_date.  
 Relationships: 1:M with orders.
 
-**ENTITY: products**  
+ENTITY: products 
 Purpose: Product catalog.  
-Attributes: productid (PK), productname, category, price, stockquantity.  
-Relationships: 1:M with orderitems.
+Attributes: product_id (PK), product_name, category, price, stock_quantity.  
+Relationships: 1:M with order_items.
 
-**ENTITY: orders**  
+ENTITY: orders 
 Purpose: Order headers.  
-Attributes: orderid (PK), customerid (FK), orderdate, totalamount, status.  
-Relationships: M:1 with customers, 1:M with orderitems.
+Attributes: orderid (PK), customer_id (FK), order_date, total_amount, status.  
+Relationships: M:1 with customers, 1:M with order_items.
 
-**ENTITY: orderitems**  
+ENTITY: order_items 
 Purpose: Order line items.  
-Attributes: orderitemid (PK), orderid (FK), productid (FK), quantity, unitprice, subtotal.
+Attributes: order_item_id (PK), orderid (FK), product_id (FK), quantity, unit_price, subtotal.
 
-## Normalization (3NF)
+Normalization (3NF)
 The FlexiMart database design achieves Third Normal Form (3NF) by eliminating partial and transitive dependencies while preserving data integrity.
 
 Functional Dependencies:
 
-customerid → firstname, lastname, email, phone, city, registrationdate (customerid fully determines all customer attributes)
+customer_id → first_name, last_name, email, phone, city, registration_date (customer_id fully determines all customer attributes)
 
-orderid → customerid, orderdate, totalamount, status (orderid fully determines order details)
+order_id → customer_id, order_date, total_amount, status (orderid fully determines order details)
 
-productid → productname, category, price, stockquantity (productid fully determines product details)
+product_id → product_name, category, price, stock_quantity (product_id fully determines product details)
 
-orderitemid → orderid, productid, quantity, unitprice, subtotal (orderitemid fully determines line item)
+order_item_id → orderid, product_id, quantity, unit_price, subtotal (order_item_id fully determines line item)
 
-No Partial Dependencies: All non-key attributes depend on the entire primary key, not part of composite keys. For example, in orderitems, quantity depends on complete (orderitemid), not just orderid or productid.
+No Partial Dependencies: All non-key attributes depend on the entire primary key, not part of composite keys. For example, in order_items, quantity depends on complete (order_item_id), not just orderid or product_id.
 
-No Transitive Dependencies: Non-key attributes don't depend on other non-key attributes. Customer city depends directly on customerid, not through intermediate attributes like email.
+No Transitive Dependencies: Non-key attributes don't depend on other non-key attributes. Customer city depends directly on customer_id, not through intermediate attributes like email.
 
 Anomaly Prevention:
 

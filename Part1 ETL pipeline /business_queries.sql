@@ -3,14 +3,14 @@
 -- Expected to return customers with 2+ orders and >5000 spent
 
 SELECT
-        CONCAT(c.firstname, ' ', c.lastname) AS customername, c.email,
-        COUNT(DISTINCT o.orderid) AS totalorders, SUM(oi.subtotal) AS totalspent
+        CONCAT(c.first_name, ' ', c.last_name) AS customer_name, c.email,
+        COUNT(DISTINCT o.orderid) AS total_orders, SUM(oi.subtotal) AS total_spent
         FROM customers c
-        JOIN orders o ON c.customerid = o.customerid
-        JOIN orderitems oi ON o.orderid = oi.orderid
-        GROUP BY c.customerid, c.firstname, c.lastname, c.email
-        HAVING totalorders >= 2 AND totalspent > 5000
-        ORDER BY totalspent DESC;
+        JOIN orders o ON c.customer_id = o.customer_id
+        JOIN order_items oi ON o.orderid = oi.orderid
+        GROUP BY c.customer_id, c.first_name, c.last_name, c.email
+        HAVING total_orders >= 2 AND total_spent > 5000
+        ORDER BY total_spent DESC;
 
 
 -- Query 2: Product Sales Analysis
@@ -19,14 +19,14 @@ SELECT
 
 SELECT
         p.category,
-        COUNT(DISTINCT p.productid) AS numproducts,
-        SUM(oi.quantity) AS totalquantitysold,
-        SUM(oi.subtotal) AS totalrevenue
+        COUNT(DISTINCT p.product_id) AS num_products,
+        SUM(oi.quantity) AS total_quantity_sold,
+        SUM(oi.subtotal) AS total_revenue
     FROM products p
-    JOIN orderitems oi ON p.productid = oi.productid
+    JOIN order_items oi ON p.product_id = oi.product_id
     GROUP BY p.category
-    HAVING totalrevenue > 10000
-    ORDER BY totalrevenue DESC; 
+    HAVING total_revenue > 10000
+    ORDER BY total_revenue DESC; 
 
 
 -- Query 3: Monthly Sales Trend
@@ -34,12 +34,12 @@ SELECT
 -- Expected to show monthly and cumulative revenue
 
 SELECT
-    MONTHNAME(o.orderdate) AS monthname,
-    COUNT(o.orderid) AS totalorders,
-    SUM(o.totalamount) AS monthlyrevenue,
-    SUM(SUM(o.totalamount)) OVER (ORDER BY MONTH(o.orderdate)) AS cumulativerevenue
+    MONTHNAME(o.order_date) AS monthname,
+    COUNT(o.orderid) AS total_orders,
+    SUM(o.total_amount) AS monthly_revenue,
+    SUM(SUM(o.total_amount)) OVER (ORDER BY MONTH(o.order_date)) AS cumulative_revenue
 FROM orders o
-WHERE YEAR(o.orderdate) = 2024
-GROUP BY MONTH(o.orderdate), monthname
-ORDER BY MONTH(o.orderdate);
+WHERE YEAR(o.order_date) = 2024
+GROUP BY MONTH(o.order_date), monthname
+ORDER BY MONTH(o.order_date);
 
