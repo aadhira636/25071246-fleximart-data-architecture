@@ -1,0 +1,103 @@
+-- dim_date: Jan 1 - Feb 15, 2024 (30+ days)
+INSERT INTO dim_date VALUES
+(20240101, '2024-01-01', 'Monday', 1, 1, 'January', 'Q1', 2024, 0),
+(20240102, '2024-01-02', 'Tuesday', 2, 1, 'January', 'Q1', 2024, 0),
+(20240103, '2024-01-03', 'Wednesday', 3, 1, 'January', 'Q1', 2024, 0),
+(20240104, '2024-01-04', 'Thursday', 4, 1, 'January', 'Q1', 2024, 0),
+(20240105, '2024-01-05', 'Friday', 5, 1, 'January', 'Q1', 2024, 0),
+(20240106, '2024-01-06', 'Saturday', 6, 1, 'January', 'Q1', 2024, 1),
+(20240107, '2024-01-07', 'Sunday', 7, 1, 'January', 'Q1', 2024, 1),
+(20240108, '2024-01-08', 'Monday', 8, 1, 'January', 'Q1', 2024, 0),
+(20240109, '2024-01-09', 'Tuesday', 9, 1, 'January', 'Q1', 2024, 0),
+(20240110, '2024-01-10', 'Wednesday', 10, 1, 'January', 'Q1', 2024, 0),
+(20240111, '2024-01-11', 'Thursday', 11, 1, 'January', 'Q1', 2024, 0),
+(20240112, '2024-01-12', 'Friday', 12, 1, 'January', 'Q1', 2024, 0),
+(20240113, '2024-01-13', 'Saturday', 13, 1, 'January', 'Q1', 2024, 1),
+(20240114, '2024-01-14', 'Sunday', 14, 1, 'January', 'Q1', 2024, 1),
+(20240115, '2024-01-15', 'Monday', 15, 1, 'January', 'Q1', 2024, 0),
+(20240116, '2024-01-16', 'Monday', 16, 1, 'January', 'Q1', 2024, 0),
+(20240117, '2024-01-17', 'Tuesday', 17, 1, 'January', 'Q1', 2024, 0),
+(20240118, '2024-01-18', 'Wednesday', 18, 1, 'January', 'Q1', 2024, 0),
+(20240119, '2024-01-19', 'Thursday', 19, 1, 'January', 'Q1', 2024, 0),
+(20240120, '2024-01-20', 'Friday', 20, 1, 'January', 'Q1', 2024, 0),
+(20240121, '2024-01-21', 'Saturday', 21, 1, 'January', 'Q1', 2024, 1),
+(20240122, '2024-01-22', 'Sunday', 22, 1, 'January', 'Q1', 2024, 1),
+(20240123, '2024-01-23', 'Monday', 23, 1, 'January', 'Q1', 2024, 0),
+(20240124, '2024-01-24', 'Tuesday', 24, 1, 'January', 'Q1', 2024, 0),
+(20240125, '2024-01-25', 'Wednesday', 25, 1, 'January', 'Q1', 2024, 0),
+(20240126, '2024-01-26', 'Thursday', 26, 1, 'January', 'Q1', 2024, 0),
+(20240127, '2024-01-27', 'Friday', 27, 1, 'January', 'Q1', 2024, 0),
+(20240128, '2024-01-28', 'Saturday', 28, 1, 'January', 'Q1', 2024, 1),
+(20240129, '2024-01-29', 'Sunday', 29, 1, 'January', 'Q1', 2024, 1),
+(20240130, '2024-01-30', 'Monday', 30, 1, 'January', 'Q1', 2024, 0),
+(20240131, '2024-01-31', 'Tuesday', 31, 1, 'January', 'Q1', 2024, 0);
+
+
+INSERT INTO dim_product (product_id, product_name, category, subcategory, unit_price) VALUES
+('P001', 'Samsung Galaxy S21', 'Electronics', 'Smartphones', 45000.00),
+('P002', 'iPhone 13 Pro', 'Electronics', 'Smartphones', 75000.00),
+('P003', 'MacBook Air M2', 'Electronics', 'Laptops', 85000.00),
+('P004', 'Nike Air Max', 'Apparel', 'Shoes', 8000.00),
+('P005', 'Adidas Ultraboost', 'Apparel', 'Shoes', 12000.00),
+('P006', 'Levis Jeans 501', 'Apparel', 'Clothing', 2500.00),
+('P007', 'Python Crash Course', 'Books', 'Programming', 1500.00),
+('P008', 'Clean Code', 'Books', 'Programming', 2000.00),
+('P009', 'Data Science Handbook', 'Books', 'Data Science', 3000.00),
+('P010', 'AirPods Pro', 'Electronics', 'Accessories', 20000.00),
+('P011', 'Dell XPS 13', 'Electronics', 'Laptops', 95000.00),
+('P012', 'Puma Running Shoes', 'Apparel', 'Shoes', 5000.00),
+('P013', 'React Native Cookbook', 'Books', 'Mobile Dev', 2200.00),
+('P014', 'Sony WH-1000XM4', 'Electronics', 'Headphones', 25000.00),
+('P015', 'FastAPI Guide', 'Books', 'Backend Dev', 1800.00);
+
+-- dim_customer: 12 customers from customers_raw.csv (cleaned, 4 cities)
+INSERT INTO dim_customer (customer_id, customer_name, city, states, customer_segment) VALUES
+('C001', 'John Doe', 'Mumbai', 'Maharashtra', 'High Value'),
+('C002', 'Jane Smith', 'Delhi', 'Delhi', 'High Value'),
+('C003', 'Rahul Patel', 'Pune', 'Maharashtra', 'Medium Value'),
+('C004', 'Priya Sharma', 'Mumbai', 'Maharashtra', 'High Value'),
+('C005', 'Amit Kumar', 'Delhi', 'Delhi', 'Medium Value'),
+('C006', 'Sneha Gupta', 'Bangalore', 'Karnataka', 'Low Value'),
+('C007', 'Rohan Desai', 'Pune', 'Maharashtra', 'Medium Value'),
+('C008', 'Anita Reddy', 'Bangalore', 'Karnataka', 'High Value'),
+('C009', 'Vikram Singh', 'Delhi', 'Delhi', 'Low Value'),
+('C010', 'Meera Joshi', 'Mumbai', 'Maharashtra', 'Medium Value'),
+('C011', 'Kiran Rao', 'Bangalore', 'Karnataka', 'Low Value'),
+('C012', 'Priya Singh', 'Bangalore', 'Karnataka', 'Low Value');
+
+-- fact_sales: 40 transactions (realistic: weekends higher qty, occasional discounts)
+INSERT INTO fact_sales (date_key, product_key, customer_key, quantity_sold, unit_price, discount_amount, total_amount) VALUES
+-- Jan 2024 (25 txns)
+(20240115, 1, 1, 2, 45000.00, 0.00, 90000.00),     
+(20240120, 3, 2, 5, 85000.00, 4250.00, 412500.00),  
+(20240106, 4, 3, 3, 8000.00, 0.00, 24000.00),       
+(20240121, 7, 4, 4, 1500.00, 0.00, 6000.00),        
+(20240108, 10, 5, 1, 20000.00, 0.00, 20000.00),     
+(20240113, 2, 6, 1, 75000.00, 0.00, 75000.00),      
+(20240127, 11, 7, 1, 95000.00, 9500.00, 85500.00),  
+(20240114, 14, 8, 2, 25000.00, 0.00, 50000.00),     
+(20240122, 6, 9, 2, 2500.00, 0.00, 5000.00),        
+(20240129, 9, 10, 3, 3000.00, 0.00, 9000.00),       
+
+(20240131, 15, 11, 5, 1800.00, 0.00, 9000.00),
+(20240110, 5, 12, 2, 12000.00, 0.00, 24000.00),
+(20240112, 12, 1, 4, 5000.00, 0.00, 20000.00),
+(20240118, 8, 2, 2, 2000.00, 0.00, 4000.00),
+(20240125, 13, 3, 3, 2200.00, 0.00, 6600.00),
+
+-- Feb 2024 (15 txns)
+(20240201, 1, 4, 1, 45000.00, 0.00, 45000.00),
+(20240203, 3, 5, 3, 85000.00, 0.00, 255000.00),     
+(20240204, 4, 6, 6, 8000.00, 480.00, 19200.00),     
+(20240210, 7, 7, 2, 1500.00, 0.00, 3000.00),
+(20240211, 10, 8, 1, 20000.00, 2000.00, 18000.00),  
+(20240205, 2, 9, 1, 75000.00, 0.00, 75000.00),
+(20240212, 11, 10, 1, 95000.00, 0.00, 95000.00),
+(20240215, 14, 11, 2, 25000.00, 0.00, 50000.00),
+(20240208, 6, 12, 3, 2500.00, 0.00, 7500.00),
+(20240213, 9, 1, 4, 3000.00, 0.00, 12000.00),
+(20240206, 5, 2, 1, 12000.00, 0.00, 12000.00),
+(20240214, 12, 3, 5, 5000.00, 0.00, 25000.00),    
+(20240207, 15, 4, 2, 1800.00, 0.00, 3600.00),
+(20240202, 8, 5, 3, 2000.00, 0.00, 6000.00),
+(20240209, 13, 6, 2, 2200.00, 0.00, 4400.00);
