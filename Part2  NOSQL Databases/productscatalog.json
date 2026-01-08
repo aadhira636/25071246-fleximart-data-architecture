@@ -1,0 +1,8 @@
+[
+  {"productid": "ELEC001", "name": "Samsung Galaxy S21", "category": "Electronics", "price": 79999, "stock": 150, "specs": {"ram": "8GB", "storage": "128GB"}, "reviews": [{"user": "U001", "rating": 5, "comment": "Great!", "date": "2024-01-15"}]},
+  {"productid": "ELEC002", "name": "Apple MacBook Pro", "category": "Electronics", "price": 159999, "stock": 45, "specs": {"ram": "16GB", "processor": "M2"}, "reviews": [{"user": "U002", "rating": 4, "comment": "Premium build", "date": "2024-01-20"}]},
+  {"productid": "FASH001", "name": "Nike Running Shoes", "category": "Fashion", "price": 3499, "stock": 80, "specs": {"size": "9", "color": "Black"}, "reviews": []},
+  {"productid": "GROC001", "name": "Organic Almonds", "category": "Groceries", "price": 899, "stock": 200, "reviews": [{"user": "U003", "rating": 5, "comment": "Fresh!", "date": "2024-02-01"}]},
+  {"productid": "ELEC003", "name": "Sony Headphones", "category": "Electronics", "price": 1999, "stock": 250, "reviews": [{"user": "U004", "rating": 4, "comment": "Good sound", "date": "2024-02-05"}]}
+]
+
