@@ -26,7 +26,7 @@ SELECT
     JOIN orderitems oi ON p.productid = oi.productid
     GROUP BY p.category
     HAVING totalrevenue > 10000
-    ORDER BY totalrevenue DESC;
+    ORDER BY totalrevenue DESC; 
 
 
 -- Query 3: Monthly Sales Trend
